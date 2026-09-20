@@ -2,130 +2,96 @@
 
 **Une application de bureau pour créer, personnaliser et sauvegarder ses tier lists.**
 
-Projet collectif réalisé à quatre dans le cadre de la **SAÉ 2.01 — Développement d'une application**, en première année de BUT Informatique à l'IUT de Laval.
-
-Java 21 · JavaFX 21 · FXML / CSS · Maven · Jackson · MVC
+J'ai participé au développement de MakeMyTierlist au sein d'une équipe de quatre personnes. L'application permet de classer des textes ou des images par glisser-déposer, de personnaliser ses catégories et de retrouver ses classements entre les sessions.
 
 ![Éditeur de tier list](docs/images/editeur.png)
 
-*Capture extraite du rapport de projet fourni avec le livrable.*
+## Technologies & outils
+
+- **Langage :** Java 21, programmation orientée objet.
+- **Interface graphique :** JavaFX, vues FXML et CSS ; Scene Builder pour la conception visuelle des vues.
+- **Maquettage :** maquettes papier et Figma pour préparer les écrans et les interactions.
+- **Architecture :** MVC, avec séparation du modèle métier, des vues et des contrôleurs.
+- **Dépendances et compilation :** Maven, Maven Wrapper (`mvnw`) et Maven Shade Plugin pour générer un JAR avec ses dépendances.
+- **API externe :** RAWG, interrogée avec `HttpClient` pour rechercher des images de jeux vidéo.
+- **Traitement JSON :** Jackson pour convertir les réponses de l'API en objets Java.
+- **Persistance :** sérialisation binaire Java pour les sauvegardes locales et l'import/export des classements.
+- **Versionnement :** Git pour le travail en équipe.
 
 ## Fonctionnalités
 
 - Créer, renommer, dupliquer et supprimer plusieurs tier lists.
 - Ajouter des éléments textuels ou des images locales.
-- Classer et réordonner les éléments par **glisser-déposer** ; réordonner les catégories.
+- Classer et réordonner les éléments par **glisser-déposer**, et modifier l'ordre des catégories.
 - Personnaliser le nom, la couleur et la hauteur des catégories, ainsi que la taille des éléments.
 - Réinitialiser un classement en ramenant les éléments dans la zone « À classer ».
-- Sauvegarder à la fermeture et restaurer au démarrage par **sérialisation binaire Java**.
-- Importer et exporter une tier list au format `.tl`.
-- Rechercher des images de jeux vidéo via l'**API RAWG**, avec une clé personnelle.
+- Sauvegarder à la fermeture et restaurer les classements au démarrage.
+- Importer et exporter une tier list au format binaire `.tl`.
+- Rechercher des images de jeux vidéo via RAWG, avec une clé API personnelle.
 
 ![Accueil et gestion des tier lists](docs/images/accueil.png)
 
-## Ce que ce projet met en pratique
+## Ma contribution
 
-| Domaine | Réalisation dans le code |
-| --- | --- |
-| Programmation orientée objet | Hiérarchie `Item`, `TextItem`, `ImageItem` ; composition des classements et catégories |
-| Architecture MVC | Modèle métier séparé des contrôleurs JavaFX et des vues FXML |
-| Persistance | `Serializable`, flux objets, duplication par copie profonde et restauration du compteur d'identifiants |
-| Interface événementielle | Dialogues, menus contextuels, glisser-déposer et personnalisation visuelle |
-| API HTTP et JSON | `HttpClient`, encodage des recherches, conversion JSON en objets avec Jackson |
-| Travail collectif | Conception de l'IHM, développement en groupe et utilisation de Git |
+Dans ce projet collectif, je me suis principalement investi dans :
 
-## Lancer l'application
+- Le développement du **modèle de données** et de la logique métier associée aux tier lists, catégories et éléments.
+- La mise en place de la **persistance binaire**, pour sauvegarder et restaurer les classements entre les sessions.
+- La conception de l'interface à travers des **maquettes papier et Figma**.
+- Une partie du développement de l'IHM en **JavaFX**, avec **Scene Builder**.
 
-### Prérequis
+## Conception technique
 
-- Un **JDK 21** avec `JAVA_HOME` correctement configuré (`java -version`).
-- Une connexion Internet pour le premier téléchargement des dépendances Maven.
-- Un environnement graphique de bureau.
+Le modèle repose sur une hiérarchie d'éléments : `Item` est spécialisée en `TextItem` et `ImageItem`. Les éléments sont regroupés dans des catégories (`Tier`), elles-mêmes organisées dans une `TierList`. Un `TierListManager` gère l'ensemble des classements.
 
-JavaFX et Jackson sont récupérés par Maven ; il n'est pas nécessaire d'installer séparément le SDK JavaFX.
+Les vues FXML décrivent les écrans, les contrôleurs JavaFX gèrent les interactions et `PersistenceManager` assure la lecture et l'écriture des données avec `ObjectInputStream` et `ObjectOutputStream`.
 
-```bash
-git clone https://github.com/D-Berat/makemytierlist.git
-cd makemytierlist
-```
-
-**Windows — PowerShell :**
-
-```powershell
-.\mvnw.cmd clean javafx:run
-```
-
-**Linux / macOS :**
-
-```bash
-sh ./mvnw clean javafx:run
-```
-
-### Recherche RAWG (facultative)
-
-La création de listes, les textes et les images locales fonctionnent sans clé API. Pour la recherche en ligne, définir `RAWG_API_KEY` dans le terminal de lancement :
-
-```powershell
-# Windows PowerShell
-$env:RAWG_API_KEY = "votre_cle_personnelle"
-.\mvnw.cmd javafx:run
-```
-
-```bash
-# Linux / macOS
-export RAWG_API_KEY="votre_cle_personnelle"
-sh ./mvnw javafx:run
-```
-
-Un fichier `.env` n'est pas chargé automatiquement. La clé n'est pas fournie dans ce dépôt.
-
-### Compiler
-
-```powershell
-.\mvnw.cmd clean verify
-```
-
-Sur Linux / macOS : `sh ./mvnw clean verify`. Le JAR assemblé est créé dans `target/SAE_TIERLIST-1.0-SNAPSHOT.jar` et se lance avec `java -jar target/SAE_TIERLIST-1.0-SNAPSHOT.jar`. Il dépend des bibliothèques natives JavaFX de la plateforme de compilation : ce n'est pas un exécutable autonome universel.
-
-Compilation et assemblage vérifiés sous Windows avec le JDK 21 (`clean verify`). Les interactions graphiques et la recherche RAWG n'ont pas été retestées lors de la préparation de ce dépôt.
-
-## Architecture
+La sérialisation sert également à dupliquer une tier list en créant une copie indépendante. Au chargement, le compteur d'identifiants des éléments est recalculé à partir des données restaurées.
 
 ```text
 src/main/java/com/example/sae_tierlist/
-├── MainApplication.java       # Démarrage, chargement et sauvegarde à la fermeture
-├── Launcher.java              # Point d'entrée du JAR assemblé
-├── model/                     # TierListManager, TierList, Tier et hiérarchie Item
+├── MainApplication.java       # Démarrage et sauvegarde à la fermeture
+├── Launcher.java              # Point d'entrée du JAR
+├── model/                     # Classements, catégories et éléments
 ├── controller/                # Accueil, éditeur et dialogues JavaFX
-├── persistence/               # Sauvegarde, restauration, import et export binaires
-└── api/                       # Client RAWG et objets de transfert JSON
+├── persistence/               # Sauvegarde, restauration et import/export
+└── api/                       # Client RAWG et objets issus du JSON
 src/main/resources/
 ├── com/example/sae_tierlist/   # Vues FXML et feuille de style
-└── image/                     # Ressources graphiques de l'application
+└── image/                     # Ressources graphiques
 ```
 
-## Données et limites connues
+## Essayer le projet
 
-- `sauvegarde.bin` est créé dans le répertoire de lancement. Les sauvegardes personnelles et les exports sont exclus de Git.
-- Les images locales sont référencées par leur chemin : un export `.tl` n'embarque pas les fichiers images et n'est donc pas entièrement portable entre ordinateurs.
-- L'import utilise la désérialisation Java sans filtre : n'importer que des fichiers `.tl` de confiance.
-- La recherche HTTP RAWG est synchrone et peut bloquer temporairement l'interface.
-- Le thème clair/sombre n'est pas implémenté.
-- Le livrable original ne comporte pas de suite de tests automatisés. Une compilation réussie ne constitue pas une validation complète des interactions graphiques.
+Le projet nécessite un **JDK 21** et un environnement graphique. Après avoir téléchargé ou cloné ce dépôt, ouvrir un terminal à sa racine. Maven Wrapper récupère Maven et les dépendances au premier lancement ; une connexion Internet est donc nécessaire.
 
-## Équipe et provenance
+| Action | Windows (PowerShell) | Linux / macOS |
+| --- | --- | --- |
+| Lancer l'application | `.\mvnw.cmd javafx:run` | `sh ./mvnw javafx:run` |
+| Compiler et générer le JAR | `.\mvnw.cmd clean verify` | `sh ./mvnw clean verify` |
+
+**Recherche RAWG facultative :** définir la variable d'environnement `RAWG_API_KEY` avant de lancer l'application. Sous PowerShell : `$env:RAWG_API_KEY = "votre_cle_personnelle"` ; sous Linux / macOS : `export RAWG_API_KEY="votre_cle_personnelle"`. Les textes et images locales ne nécessitent pas cette clé. Aucun fichier `.env` n'est chargé automatiquement.
+
+Ces indications sont tirées de la configuration Maven du dépôt. La compilation et la génération du JAR ont été vérifiées sous Windows avec Java 21. Le lancement graphique et la recherche RAWG n'ont pas été retestés lors de la mise en ligne.
+
+## Limites et pistes d'amélioration
+
+- Les images locales sont enregistrées par leur chemin : un export `.tl` n'embarque pas les images et n'est pas entièrement portable entre ordinateurs.
+- La recherche RAWG est synchrone et peut bloquer temporairement l'interface ; son exécution en arrière-plan serait une amélioration utile.
+- L'import utilise la désérialisation Java sans filtre : seuls des fichiers `.tl` de confiance doivent être ouverts.
+- Le thème clair/sombre et une suite de tests automatisés restent à développer.
+
+## Équipe
 
 **Axel Hamard · Célian Gloro · Berat Dastan · Edgar Bacquaert**
 
-Ce dépôt présente un **travail de groupe** dans le portfolio de Berat Dastan ; les fonctionnalités décrites concernent l'application collective.
+Projet réalisé en première année de BUT Informatique à l'IUT de Laval. Les fonctionnalités présentées sont le résultat du travail collectif ; la section « Ma contribution » décrit mon implication personnelle.
 
-### Ma contribution — Berat Dastan
+<details>
+<summary>À propos de la version publiée</summary>
 
-- Développement du **modèle de données** et de la logique métier associée aux tier lists, catégories et éléments.
-- Mise en place de la **persistance binaire** pour sauvegarder et restaurer les classements entre les sessions.
-- Participation à la conception de l'interface : **maquettes papier et Figma**.
-- Contribution au développement de l'IHM en **JavaFX**, avec **Scene Builder**.
+Ce dépôt reprend le code du projet de groupe. Pour sa publication, la clé RAWG présente dans le code d'origine a été remplacée par une variable d'environnement, avec un message dans l'interface si elle n'est pas configurée.
 
-Les autres fonctionnalités présentées dans ce README sont des réalisations de l'équipe ; cette section précise mon périmètre personnel.
+Le README, les règles d'exclusion et les deux captures extraites du rapport ont été préparés pour cette présentation. Les sauvegardes personnelles, fichiers d'IDE, fichiers de compilation et documents du livrable ne sont pas inclus. L'historique public commence à l'import du projet ; il ne reconstitue pas l'historique de développement de l'équipe.
 
-La version publiée provient du livrable de la SAÉ. La préparation pour GitHub ajoute cette documentation, des captures du rapport, des règles d'exclusion et une configuration de la clé RAWG par variable d'environnement. L'historique public démarre à cet import nettoyé ; il ne reconstitue pas l'historique de développement de l'équipe.
+</details>
