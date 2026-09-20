@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="350.0" spacing="15.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae_tierlist.controller.DialogModifierItemController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label styleClass="dialog-titre" stylesheets="@style.css" text="Modifier le nom de l'item" />
+        <Label styleClass="dialog-label" stylesheets="@style.css" text="Entrez le nouveau nom de l'item" />
+        <TextField fx:id="champNom" />
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="boutonAnnuler" onAction="#onAnnuler" styleClass="bouton-secondaire" stylesheets="@style.css" text="Annuler" />
+                <Button fx:id="boutonValider" onAction="#onValider" styleClass="bouton-principal" stylesheets="@style.css" text="Modifier" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
