@@ -1,0 +1,216 @@
+/* === STYLES GLOBAUX === */
+.root {
+    -fx-background-color: #f5f5f4;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* === BARRE DU HAUT === */
+.top-bar {
+    -fx-background-color: white;
+    -fx-padding: 12 20 12 20;
+    -fx-border-color: #e5e5e5;
+    -fx-border-width: 0 0 1 0;
+}
+
+.app-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f1f1f;
+}
+
+.tierlist-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f1f1f;
+}
+
+/* === BOUTONS === */
+.bouton-principal {
+    -fx-background-color: #1f1f1f;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+}
+.bouton-principal:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.bouton-secondaire {
+    -fx-background-color: white;
+    -fx-text-fill: #1f1f1f;
+    -fx-border-color: #d4d4d4;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 12 6 12;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+.bouton-secondaire:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.bouton-ajout {
+    -fx-background-color: transparent;
+    -fx-border-color: #d4d4d4;
+    -fx-border-style: dashed;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #6b6b6b;
+    -fx-padding: 10 16 10 16;
+    -fx-cursor: hand;
+}
+.bouton-ajout:hover {
+    -fx-background-color: #ebebeb;
+}
+
+/* === CARTES TIER-LIST (accueil) === */
+.carte {
+    -fx-background-color: white;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+}
+
+.carte-titre {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f1f1f;
+}
+
+.carte-creation {
+    -fx-border-color: #d4d4d4;
+    -fx-border-style: dashed;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-cursor: hand;
+}
+
+/* === ÉDITEUR === */
+.ligne-tier {
+    -fx-border-color: #e5e5e5;
+    -fx-border-width: 0 0 1 0;
+}
+
+.label-tier {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+
+.zone-items {
+    -fx-background-color: white;
+    -fx-padding: 8;
+}
+
+.zone-aclasser {
+    -fx-background-color: white;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+
+.label-section {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6b6b6b;
+}
+
+.item-text {
+    -fx-background-color: #e0e7ff;
+    -fx-text-fill: #1e3a8a;
+    -fx-padding: 6 10 6 10;
+    -fx-background-radius: 4;
+    -fx-font-size: 12px;
+}
+
+/* === SCROLLPANE === */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.bouton-action {
+    -fx-background-color: transparent;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #6b6b6b;
+    -fx-padding: 4 10 4 10;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+.bouton-action:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.root {
+    -fx-background-color: #f5f5f4;
+    -fx-font-family: "Georgia", "Segoe UI", sans-serif;
+}
+
+.carte-titre-editable {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 6 4 6;
+}
+
+.item-boite {
+    -fx-background-color: #f5f5f7;
+    -fx-background-radius: 4;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+}
+
+.carte-titre-editable:focused {
+    -fx-background-color: white;
+    -fx-border-color: #d0d0d0;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.dialog-titre {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f1f1f;
+}
+
+.dialog-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b6b6b;
+}
+
+.bouton-danger {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 6 12 6 12;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+.bouton-danger:hover {
+    -fx-background-color: #b91c1c;
+}
+
+.carte-resultat-api {
+    -fx-background-color: #fafafa;
+    -fx-background-radius: 6;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+    -fx-padding: 4;
+}
+
+.carte-resultat-api:hover {
+    -fx-background-color: #f0f0ff;
+    -fx-border-color: #b0b0e0;
+}

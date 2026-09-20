@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="147.0" prefWidth="450.0" spacing="15.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sae_tierlist.controller.DialogReinitialiserTierListController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <Label prefHeight="25.0" prefWidth="478.0" styleClass="dialog-titre" stylesheets="@style.css" text="Êtes-vous sûr de vouloir réinitialiser la TierList ?" VBox.vgrow="ALWAYS" />
+        <Label styleClass="dialog-label" stylesheets="@style.css" text="Cette action est irrévocable" />
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="boutonAnnuler" onAction="#onAnnuler" styleClass="bouton-secondaire" stylesheets="@style.css" text="Annuler" />
+                <Button fx:id="boutonSupprimer" onAction="#onSupprimer" styleClass="bouton-principal" stylesheets="@style.css" text="Réinitialiser" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
