@@ -1,12 +1,18 @@
 # MakeMyTierlist
 
+![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![JavaFX](https://img.shields.io/badge/JavaFX-21-087EA4?style=flat-square)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-242938?style=flat-square&logo=figma&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+
 **Une application de bureau pour créer, personnaliser et sauvegarder ses tier lists.**
 
 J'ai participé au développement de MakeMyTierlist au sein d'une équipe de quatre personnes. L'application permet de classer des textes ou des images par glisser-déposer, de personnaliser ses catégories et de retrouver ses classements entre les sessions.
 
 ![Éditeur de tier list](docs/images/editeur.png)
 
-## Technologies & outils
+## 🛠️ Technologies & outils
 
 - **Langage :** Java 21, programmation orientée objet.
 - **Interface graphique :** JavaFX, vues FXML et CSS ; Scene Builder pour la conception visuelle des vues.
@@ -18,7 +24,7 @@ J'ai participé au développement de MakeMyTierlist au sein d'une équipe de qua
 - **Persistance :** sérialisation binaire Java pour les sauvegardes locales et l'import/export des classements.
 - **Versionnement :** Git pour le travail en équipe.
 
-## Fonctionnalités
+## ✨ Fonctionnalités
 
 - Créer, renommer, dupliquer et supprimer plusieurs tier lists.
 - Ajouter des éléments textuels ou des images locales.
@@ -29,9 +35,7 @@ J'ai participé au développement de MakeMyTierlist au sein d'une équipe de qua
 - Importer et exporter une tier list au format binaire `.tl`.
 - Rechercher des images de jeux vidéo via RAWG, avec une clé API personnelle.
 
-![Accueil et gestion des tier lists](docs/images/accueil.png)
-
-## Ma contribution
+## 👨‍💻 Ma contribution
 
 Dans ce projet collectif, je me suis principalement investi dans :
 
@@ -40,7 +44,41 @@ Dans ce projet collectif, je me suis principalement investi dans :
 - La conception de l'interface à travers des **maquettes papier et Figma**.
 - Une partie du développement de l'IHM en **JavaFX**, avec **Scene Builder**.
 
-## Conception technique
+## 🎨 De la maquette à l'application
+
+J'ai participé aux maquettes papier et Figma, puis à une partie de leur mise en œuvre en JavaFX avec Scene Builder. Ces vues permettent de comparer la conception initiale avec l'application livrée.
+
+### Accueil : retrouver ses classements
+
+| Maquette Figma | Application JavaFX |
+| :---: | :---: |
+| [![Maquette Figma de l'accueil](docs/images/figma-accueil.png)](docs/images/figma-accueil.png) | [![Accueil réalisé en JavaFX](docs/images/accueil.png)](docs/images/accueil.png) |
+
+Le principe des cartes avec aperçu des classements est conservé. Dans l'application, les actions de duplication, de suppression et d'export sont regroupées sur chaque carte. La recherche et la pagination dessinées dans Figma ne sont pas présentes dans cette version.
+
+### Éditeur : organiser les éléments
+
+| Maquette Figma | Application JavaFX |
+| :---: | :---: |
+| [![Maquette Figma de l'éditeur](docs/images/figma-editeur.png)](docs/images/figma-editeur.png) | [![Éditeur réalisé en JavaFX](docs/images/editeur.png)](docs/images/editeur.png) |
+
+Les catégories colorées et la zone « À classer » sont conservées. Le panneau latéral de la maquette est remplacé par des dialogues et des menus contextuels pour ajouter des éléments et personnaliser les catégories. RAWG est intégré ; TMDB et le thème clair/sombre restent des idées de maquette, pas des fonctionnalités réalisées.
+
+*Les vues Figma proviennent des pages 2 et 3 de l'export fourni avec le projet. Les captures JavaFX proviennent du rapport. Cliquer sur une image pour l'agrandir.*
+
+<details>
+<summary>✏️ Voir les premières maquettes et les documents de conception</summary>
+
+- [Maquette papier de l'accueil](docs/conception/maquette-papier-accueil.png)
+- [Maquette papier de l'éditeur](docs/conception/maquette-papier-editeur.png)
+- [Arbre des tâches utilisateur](docs/conception/arbre-des-taches.png)
+- [Export Figma complet — 14 pages](docs/conception/maquettes-figma.pdf)
+
+Ces documents sont les fichiers de conception d'origine. Ils peuvent présenter des pistes qui n'ont pas toutes été retenues dans l'application.
+
+</details>
+
+## 🧩 Conception technique
 
 Le modèle repose sur une hiérarchie d'éléments : `Item` est spécialisée en `TextItem` et `ImageItem`. Les éléments sont regroupés dans des catégories (`Tier`), elles-mêmes organisées dans une `TierList`. Un `TierListManager` gère l'ensemble des classements.
 
@@ -61,7 +99,7 @@ src/main/resources/
 └── image/                     # Ressources graphiques
 ```
 
-## Essayer le projet
+## 🚀 Essayer le projet
 
 Le projet nécessite un **JDK 21** et un environnement graphique. Après avoir téléchargé ou cloné ce dépôt, ouvrir un terminal à sa racine. Maven Wrapper récupère Maven et les dépendances au premier lancement ; une connexion Internet est donc nécessaire.
 
@@ -74,14 +112,27 @@ Le projet nécessite un **JDK 21** et un environnement graphique. Après avoir t
 
 Ces indications sont tirées de la configuration Maven du dépôt. La compilation et la génération du JAR ont été vérifiées sous Windows avec Java 21. Le lancement graphique et la recherche RAWG n'ont pas été retestés lors de la mise en ligne.
 
-## Limites et pistes d'amélioration
+## 🔧 Limites et pistes d'amélioration
 
 - Les images locales sont enregistrées par leur chemin : un export `.tl` n'embarque pas les images et n'est pas entièrement portable entre ordinateurs.
 - La recherche RAWG est synchrone et peut bloquer temporairement l'interface ; son exécution en arrière-plan serait une amélioration utile.
 - L'import utilise la désérialisation Java sans filtre : seuls des fichiers `.tl` de confiance doivent être ouverts.
 - Le thème clair/sombre et une suite de tests automatisés restent à développer.
 
-## Équipe
+## 📋 Contexte du projet
+
+L'objectif était de développer en équipe une application de classement visuel : gérer plusieurs listes, manipuler des éléments texte ou image, organiser les catégories par glisser-déposer et conserver les données entre les sessions.
+
+Les contraintes techniques portaient sur JavaFX, la persistance binaire et une interface capable de gérer au moins 40 éléments sous forme d'images. L'import/export, la personnalisation et l'intégration d'une API faisaient partie des extensions proposées. Ce sont les attentes du sujet, pas des résultats de tests de performance.
+
+<details>
+<summary>📄 Consulter le sujet d'origine</summary>
+
+[Sujet du projet — PDF](docs/sujet.pdf), fourni par l'IUT de Laval. Le document est conservé tel quel ; ses intitulés et dates sont ceux du support pédagogique d'origine.
+
+</details>
+
+## 👥 Équipe
 
 **Axel Hamard · Célian Gloro · Berat Dastan · Edgar Bacquaert**
 
@@ -92,6 +143,6 @@ Projet réalisé en première année de BUT Informatique à l'IUT de Laval. Les 
 
 Ce dépôt reprend le code du projet de groupe. Pour sa publication, la clé RAWG présente dans le code d'origine a été remplacée par une variable d'environnement, avec un message dans l'interface si elle n'est pas configurée.
 
-Le README, les règles d'exclusion et les deux captures extraites du rapport ont été préparés pour cette présentation. Les sauvegardes personnelles, fichiers d'IDE, fichiers de compilation et documents du livrable ne sont pas inclus. L'historique public commence à l'import du projet ; il ne reconstitue pas l'historique de développement de l'équipe.
+Le README, les règles d'exclusion et les deux captures extraites du rapport ont été préparés pour cette présentation. Les maquettes et le sujet d'origine sont accessibles dans la documentation. Les sauvegardes personnelles, fichiers d'IDE, fichiers de compilation et le rapport complet ne sont pas inclus. L'historique public commence à l'import du projet ; il ne reconstitue pas l'historique de développement de l'équipe.
 
 </details>
