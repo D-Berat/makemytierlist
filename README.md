@@ -48,6 +48,14 @@ Dans ce projet collectif, je me suis principalement investi dans :
 
 J'ai participé aux maquettes papier et Figma, puis à une partie de leur mise en œuvre en JavaFX avec Scene Builder. Ces vues permettent de comparer la conception initiale avec l'application livrée.
 
+### Démonstration du prototype Figma
+
+[![Voir la démonstration du prototype Figma](docs/images/prototype-figma-apercu.jpg)](docs/videos/prototype-figma.mp4)
+
+[▶️ Voir la vidéo du prototype Figma (38 secondes)](docs/videos/prototype-figma.mp4)
+
+Le parcours montre le choix de la source des images, la suppression d'un tier, la création et la personnalisation de « Top 1 », l'ajout d'une carte, la réinitialisation et la variante sombre. Il s'agit des interactions du prototype Figma ; les captures ci-dessous montrent également l'application JavaFX livrée.
+
 ### Accueil : retrouver ses classements
 
 | Maquette Figma | Application JavaFX |
