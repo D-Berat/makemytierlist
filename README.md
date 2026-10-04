@@ -64,7 +64,17 @@ Le principe des cartes avec aperçu des classements est conservé. Dans l'applic
 
 Les catégories colorées et la zone « À classer » sont conservées. Le panneau latéral de la maquette est remplacé par des dialogues et des menus contextuels pour ajouter des éléments et personnaliser les catégories. RAWG est intégré ; TMDB et le thème clair/sombre restent des idées de maquette, pas des fonctionnalités réalisées.
 
-*Les vues Figma proviennent des pages 2 et 3 de l'export fourni avec le projet. Les captures JavaFX proviennent du rapport. Cliquer sur une image pour l'agrandir.*
+### Créer et personnaliser un tier
+
+| Formulaire initial du prototype | Nom, couleur et hauteur renseignés |
+| :---: | :---: |
+| [![Formulaire Figma de création d'un tier](docs/images/figma-nouveau-tier.png)](docs/images/figma-nouveau-tier.png) | [![Tier Top 1 personnalisé dans Figma](docs/images/figma-tier-personnalise.png)](docs/images/figma-tier-personnalise.png) |
+
+Le prototype détaille la création d'un tier : saisie du nom, choix de la couleur, réglage de la hauteur et position dans le classement. Les étapes suivantes montrent son ajout, le classement d'une carte, la réinitialisation et une variante sombre.
+
+[Parcourir les 15 vues Figma dans l'ordre, avec leurs légendes](docs/conception/maquettes-figma.pdf).
+
+*Les vues Figma sont issues de l'export du prototype. Les captures JavaFX proviennent du rapport. Les deux formulaires ci-dessus sont des maquettes. Cliquer sur une image pour l'agrandir.*
 
 <details>
 <summary>✏️ Voir les premières maquettes et les documents de conception</summary>
@@ -72,9 +82,9 @@ Les catégories colorées et la zone « À classer » sont conservées. Le panne
 - [Maquette papier de l'accueil](docs/conception/maquette-papier-accueil.png)
 - [Maquette papier de l'éditeur](docs/conception/maquette-papier-editeur.png)
 - [Arbre des tâches utilisateur](docs/conception/arbre-des-taches.png)
-- [Export Figma complet - 14 pages](docs/conception/maquettes-figma.pdf)
+- [Parcours Figma - 15 vues légendées](docs/conception/maquettes-figma.pdf)
 
-Ces documents sont les fichiers de conception d'origine. Ils peuvent présenter des pistes qui n'ont pas toutes été retenues dans l'application.
+Les maquettes Figma sont regroupées dans l'ordre du parcours, avec les indications d'étape en légende. Elles peuvent présenter des pistes qui n'ont pas toutes été retenues dans l'application.
 
 </details>
 
